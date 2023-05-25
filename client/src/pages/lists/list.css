@@ -23,9 +23,11 @@
 }
 
 .lsTitle{
-    font-size: 20px;
-    color: #ffffff;
-    margin-bottom: 10px;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Stencil';
+    color: #eadfdf;
+    margin-bottom: 20px;
 }
 
 .lsItem{
@@ -36,7 +38,8 @@
 }
 
 .lsItem>label{
-    font-size: 12px;
+    font-size: 20px;
+    font-family: 'Stencil';
 }
 
 .lsItem>input{
@@ -49,6 +52,7 @@
     height: 30px;
     padding: 5px;
     background-color: white;
+    color: black;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -71,7 +75,8 @@
 }
 
 .listSearch>button{
-    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background-color: #CE5959;
     color: white;
     border: none;

@@ -1,97 +1,84 @@
 .reserve {
-  width: 100vw;
-  height: 100vh;
   background-color: rgba(0, 0, 0, 0.418);
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .rContainer {
-  background-color: white;
+  width: 500px;
   padding: 20px;
   position: relative;
   max-height: 500px;
   overflow-y: auto;
-  border-radius: 5px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .rClose {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
 }
 
 .rItem {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  padding: 20px;
-}
-
-.rInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .rTitle {
-  font-weight: 700;
-  font-size: 20px;
-  padding-bottom: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .rDesc {
-  font-weight: 500;
-  font-size: 18px;
-  padding-bottom: 2px;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .rMax {
-  font-weight: 500;
-  font-size: 15px;
-  padding-bottom: 2px;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .rPrice {
-  font-weight: 500;
-  font-size: 18px;
-  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 
 .rSelectRooms {
-  display:inline;
-  flex-wrap: wrap;
-  gap: 5px;
-  font-size: 13px;
-  color: rgb(84, 83, 83);
-  justify-content: flex-end;
+  margin-top: 10px;
 }
 
 .room {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color:rgb(50, 49, 49);
-  font-weight: 500;
-  font-size: 13px;
-  margin-top: 3px;
-  gap: 2px;
+  margin-bottom: 5px;
 }
 
 .rButton {
-  border: none;
-  padding: 10px 20px;
+  width: 100%;
   background-color: #9a084c;
   color: white;
   font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
-  width: 100%;
   margin-top: 20px;
+}
+
+.ant-modal-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.ant-modal-footer {
+  display: flex;
+  justify-content: space-between;
 }

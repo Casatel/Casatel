@@ -1,35 +1,28 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
+import { Form, Input, Button, Divider,  Row, Col, Typography } from 'antd';
+import { UserOutlined, LockOutlined, GoogleOutlined } from '@ant-design/icons';
 import "./login.css";
-import Google from "../../img/google.png";
+
+const { Title } = Typography;
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
   const [errorMessage, setErrorMessage] = useState("");
-
   const navigate = useNavigate();
+  const [form] = Form.useForm();
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleFinish = async (values) => {
     try {
-      const response = await axios.post(process.env.REACT_APP_API_URL + "/auth/login", formData, {withCredentials: true});
+      const response = await axios.post(process.env.REACT_APP_API_URL + "/auth/login", values, { withCredentials: true });
       if (response.status === 200) {
         // Redirect user to home page after successful login
-        const result = await axios.get(process.env.REACT_APP_API_URL + "/users/getUser", {withCredentials: true});
+        const result = await axios.get(process.env.REACT_APP_API_URL + "/users/getUser", { withCredentials: true });
         const user = result.data;
         localStorage.setItem("user", JSON.stringify(user));
         navigate("/");
       }
-    } catch(err) {
+    } catch (err) {
       // Set error message if login fails
       if (err.response && err.response.status === 401) {
         setErrorMessage("Incorrect username or password");
@@ -44,34 +37,56 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <h1 className="loginTitle">Choose a Login Method</h1>
-      <div className="wrapper">
-        <div className="left">
-          <div className="loginButton google" onClick={google}>
-            <img src={Google} alt="" className="icon" />
+    <div className="login-container">
+      <Title level={2} className="login-title">Choose a Login Method</Title>
+      <Row gutter={24}>
+        <Col xs={{span: 24}} sm={{span: 24}} md={{span: 12}}>
+          <div className="google-login" onClick={google}>
+            <GoogleOutlined />
             Google
           </div>
-        </div>
-        <div className="center">
-          <div className="line"></div>
-          <div className="or"><h3>OR</h3></div>
-        </div>
-        <div className="right">
-          <input type="text" name="username"  placeholder='Username' value={formData.username} onChange={handleChange} required />
-          <input type="password" name="password" placeholder='Password' value={formData.password} onChange={handleChange} required />
-          <button className="submit" onClick={handleSubmit}>Login</button>
-          {errorMessage && 
-          <div>
-            <p>
-              <h4>{errorMessage}</h4>
-            </p>
-          </div>}
-        </div>
-      </div>
-      <div className="loginRedirect">
+        </Col>
+        <Col xs={{span: 24}} sm={{span: 24}} md={{span: 12}} lg={{span: 24}}>
+          <Divider className="login-divider" plain><Title level={4}>OR</Title></Divider>
+          <Form form={form} onFinish={handleFinish} className="login-form">
+          <Form.Item
+              name="username"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your username!',
+                },
+              ]}
+            >
+              <Input prefix={<UserOutlined />} placeholder="Username" />
+            </Form.Item>
+            <Form.Item
+              name="password"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your password!',
+                },
+              ]}
+            >
+              <Input.Password prefix={<LockOutlined />} placeholder="Password" />
+            </Form.Item>
+            {errorMessage && 
+              <div className="login-error-message">
+                <p>
+                  <Title level={4} className="login-error-message-title">{errorMessage}</Title>
+                </p>
+              </div>
+            }
+            <Form.Item>
+              <Button className="login-submit-button" type="primary" htmlType="submit">Log-In</Button>
+            </Form.Item>
+          </Form>
+        </Col>
+      </Row>
+      <div className="login-redirect">
         <span>Have not Registered Yet?</span>
-        <Link className="signIn" to={"/registration"}>Sign Up</Link>
+        <button className="login-sign-in" to={"/registration"}>Sign Up</button>
       </div>
     </div>
   );

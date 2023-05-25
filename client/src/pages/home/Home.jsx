@@ -21,9 +21,9 @@ export const Home = () => {
         <Header/>
         <div className="homeContainer">
           <Featured/>
-          <h1 className="homeTitle">Browser by property type</h1>
+          <h1 className="homeTitle">Display of Available Property Type</h1>
           <PropertyList/>
-          <h1 className="homeTitle">Homes guests love</h1>
+          <h1 className="homeTitle">Display of Famous Hotels</h1>
           <FeaturedProperties/>
         </div>
         <MailList/>

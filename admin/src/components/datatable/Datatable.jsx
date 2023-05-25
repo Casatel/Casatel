@@ -51,7 +51,7 @@ const Datatable = ({columns}) => {
       <div className="datatableTitle">
         {path}
         <Link to={`/${path}/new`} className="link">
-          Add New
+          Add New 
         </Link>
       </div>
       <DataGrid

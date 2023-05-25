@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import "./list.css"
+import { Layout, Input, Button } from 'antd';
 import Navbar from '../../components/navbar/Navbar'
 import Header from '../../components/header/Header'
 import { useLocation } from 'react-router-dom'
@@ -7,6 +8,8 @@ import { format } from 'date-fns'
 import { DateRange } from 'react-date-range'
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch"
+
+const { Content } = Layout;
 
 export const List = () => {
   
@@ -25,19 +28,24 @@ export const List = () => {
   const handleClick = () => {
     reFetch();
   };
-
+  
   return (
     <div>
       <Navbar/> 
-      <Header type="list"/>
-      <div className="listContainer">
-        <div className="listWrapper">
-          <div className="listSearch">
-            <h1 className="lsTitle">Search</h1>
-            <div className="lsItem">
-              <label>Destination</label>
-              <input placeholder={destination} type="text"/>
-            </div>
+      <Header type="list" />
+      <Content style={{ padding: '16px' }}>
+        <div className="listContainer">
+          <div className="listWrapper">
+            <div className="listSearch">
+              <h1 className="lsTitle">Search</h1>
+              <div className="lsItem">
+                <label>Destination</label>
+                <Input
+                  value={destination}
+                  placeholder="Destination"
+                  onChange={(e) => setDestination(e.target.value)}
+                />
+              </div>
             <div className="lsItem">
               <label>Check-In Date</label>
               <span onClick={() => setOpenDate(!openDate)}>{dates && dates[0] ? `${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}` : ''}</span>
@@ -50,24 +58,24 @@ export const List = () => {
               )}
             </div>
             <div className="lsItem">
-              <label>Options</label>
-              <div className="lsOptions">
-              <div className="lsOptionItem">
-                <span className="lsOptionText">Min Price <small>per night</small></span>
-                <input 
-                  type="number" 
-                  onChange={(e) => setMin(e.target.value)}
-                  className="lsOptionInput"
-                 />
-              </div>
-              <div className="lsOptionItem">
-                <span className="lsOptionText">Max Price <small>per night</small></span>
-                <input 
-                  type="number" 
-                  onChange={(e) => setMax(e.target.value)}
-                  className="lsOptionInput"
-                 />
-              </div>
+                <label>Options</label>
+                <div className="lsOptions">
+                  <div className="lsOptionItem">
+                    <span className="lsOptionText">Min Price <small>per night</small></span>
+                    <Input
+                      type="number"
+                      onChange={(e) => setMin(e.target.value)}
+                      className="lsOptionInput"
+                    />
+                  </div>
+                  <div className="lsOptionItem">
+                    <span className="lsOptionText">Max Price <small>per night</small></span>
+                    <Input
+                      type="number"
+                      onChange={(e) => setMax(e.target.value)}
+                      className="lsOptionInput"
+                    />
+                  </div>
               <div className="lsOptionItem">
                 <span className="lsOptionText">Adult</span>
                 <input
@@ -97,7 +105,7 @@ export const List = () => {
               </div>
             </div>
             </div>
-            <button onClick={handleClick}>Search</button>
+            <Button type="primary" onClick={handleClick}>Search</Button>
           </div>
           <div className="listResult">
             {loading ? (
@@ -112,7 +120,7 @@ export const List = () => {
           </div>
         </div>
       </div>
+      </Content>
     </div>
   );
 };
-

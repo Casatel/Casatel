@@ -1,16 +1,15 @@
 .header{
-    
     background-color: #89375F;
     color: white;
     display: flex;
     justify-content: center;
-    position:relative
+    position: relative;
 }
 
 .headerContainer{
     width: 100%;
-    max-width:1600px;
-    margin: 20px 0px 100px 0px;
+    max-width:1024px;
+    margin: 20px 0px 50px 0px;
 }
 
 .headerContainer.listModel{
@@ -44,7 +43,7 @@
     color: white;
     font-weight: 500;
     border: none;
-    padding: 10px;
+    padding: 5px;
     cursor: pointer;
     border-radius: 8px;
 }
@@ -60,7 +59,7 @@
     position: absolute;
     bottom: -25px;
     width: 100%;
-    max-width: 1600px;
+    max-width: 1024px;
 }
 
 .headerIcon{
@@ -85,8 +84,7 @@
 }
 
 .date{
-    position: absolute;
-    top: 50px;
+    position: space-around;
      z-index: 2;
 }
 
@@ -116,15 +114,10 @@
     color: black;
 }
 
-.optionCounterBtn{
-    width: 30px;
-    height: 30px;
-    border: 1px solid #361500;
-    color: #361500;
-    cursor: pointer;
-    background-color: white;
+.optionCounterBtn {
+  margin: 0 5px;
 }
 
-.optionCounterBtn:disabled{
-    cursor: not-allowed;
+.optionCounterNumber {
+  font-size: 16px;
 }
