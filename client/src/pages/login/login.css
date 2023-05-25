@@ -1,115 +1,70 @@
-.login {
-  height: calc(100vh - 50px);
+.login-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.login-title {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.google-login {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.loginTitle{
-  position: absolute;
-  top: 150px;
-  color:rgb(138, 136, 136)
-}
-
-.wrapper {
-  width: 60%;
-  height: 75%;
-  -webkit-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-  -moz-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-  box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-  display: flex;
-  align-items: center;
-  border-radius: 20px;
-}
-
-.loginRedirect {
-  font-family: Helvetica, sans-serif;
-  font-size: large;
-  position: fixed;
-  bottom: 80px;
-  margin-left: 50;
-  margin-right: 50;
-}
-
-.signIn {
-  width: 100px;
-  background-color: rgba(128, 0, 128, 0.671);
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 300px;
+  padding-right: 300px;
+  background-color: #db4437;
   color: white;
-  font-weight:normal;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  margin-left: 10px;
-  text-decoration: none;
-}
-
-.left, .right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.line {
-  width: 0.5px;
-  height: 45%;
-  background-color: lightgray;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  z-index: -1;
-}
-
-.or {
-  color: rgb(138, 136, 136);
-  background-color: rgb(255, 255, 255);
-}
-
-.loginButton {
-  width: 150px;
-  padding: 15px 25px;
-  border-radius: 5px;
-  color: white;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  margin-bottom: 20px;
   cursor: pointer;
 }
 
-.google {
-  background-color:rgba(194, 15, 15, 0.735);
+.google-login:hover {
+  background-color: #c53929;
 }
 
-.facebook {
-  background-color: #3b5998;
+.login-divider {
+  align-items: center;
+  justify-content: center;
+  height: 100px; 
+  margin: 24px 0;
 }
 
-.github {
-  background-color: #24292e;
+.login-form {
+  align-items: center;
+  width: 100%;
 }
 
-.icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
+.login-error-message {
+  margin-top: 12px;
 }
 
-input{
-  width: 200px;
-  padding: 15px 20px;
-  margin-bottom: 20px;
+.login-error-message-title {
+  color: #f5222d;
+  margin: 0;
 }
 
-.submit {
-  width: 200px;
-  background-color: rgba(128, 0, 128, 0.671);
-  color: white;
-  font-weight: bold;
+.login-submit-button {
+  background-color: #89375F;
+  width: 100%;
+}
+
+.login-redirect {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.login-redirect span {
+  margin-right: 8px;
+}
+
+.login-sign-in {
+  color: #fdfefe;
+  background-color: #89375F;
   border: none;
-  padding: 15px 20px;
-  border-radius: 5px;
+  cursor: pointer;
 }

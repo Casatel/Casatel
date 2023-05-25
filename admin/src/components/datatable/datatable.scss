@@ -5,7 +5,7 @@
   .datatableTitle{
     width: 100%;
     font-size: 24px;
-    color: gray;
+    color: #B46060;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -13,10 +13,10 @@
 
     .link{
       text-decoration: none;
-      color: green;
+      color:#B46060;
       font-size: 16px;
       font-weight: 400;
-      border: 1px solid green;
+      border: 1px solid #B46060;
       padding: 5px;
       border-radius: 5px;
       cursor: pointer;
@@ -30,12 +30,15 @@
     .cellImg {
       width: 32px;
       height: 32px;
+      color:#CE5959;
       border-radius: 50%;
       object-fit: cover;
       margin-right: 20px;
     }
   }
-
+ .datagrid{
+  box-shadow: 2px 4px 10px 1px #89375F;
+ }
   .cellWithStatus {
     padding: 5px;
     border-radius: 5px;
@@ -54,9 +57,10 @@
     }
   }
 
+ 
   .cellAction {
     display: flex;
-    align-items: center;
+    align-items: center; 
     gap: 15px;
 
     .viewButton {

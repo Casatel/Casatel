@@ -7,7 +7,7 @@
 
 .navContainer{
     width: 100%;
-    max-width: 1600px;
+    max-width: 1024px;
     color: white;
     display: flex;
     align-items: center;
@@ -15,7 +15,7 @@
 }
 
 .logo{
-    font-weight: 500;
+    font-weight: 400;
     font-size: 60px;
     color: beige;
     text-decoration: none;
@@ -24,11 +24,12 @@
 .navButton{
     margin-left: 20px;
     height: 50px;
-    width: 150px;
+    width: 90px;
     border:none;
-    border-radius: 20px;
-    padding: 5px 10px;
+    border-radius: 15px;
+    padding: 5px;
     cursor :pointer;
-    color: #89375F;
+    color: #ffffff;
+    background-color: #B46060;
     font-size: 20px;
 }

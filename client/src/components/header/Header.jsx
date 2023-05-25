@@ -47,29 +47,7 @@ const Header = ({type}) => {
   return (
     <div className='header'>
      <div className={type === "list" ? "headerContainer listModel" : "headerContainer"} >
-      <div className="headerContainer">
-        <div className="headerList">
-            <div className="headerListitem active">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Stays</span>
-            </div>
-            <div className="headerListitem">
-            <FontAwesomeIcon icon={faPlane} />
-            <span>Flights</span>
-            </div>
-            <div className="headerListitem">
-            <FontAwesomeIcon icon={faCar} />
-            <span>Car Rentals</span>
-            </div>
-            <div className="headerListitem">
-            <FontAwesomeIcon icon={faPlaceOfWorship} />
-            <span>Attractions</span>
-            </div>
-            <div className="headerListitem">
-            <FontAwesomeIcon icon={faTaxi} />
-            <span>Airport taxis</span>
-            </div>
-          </div>  
+      <div className="headerContainer">  
           { type !== "list" &&
             <>
             <h1 className="headerTitle">One-Stop destination for hassel-free hotel bookings.</h1>

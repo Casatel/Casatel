@@ -6,6 +6,8 @@
     gap: 30px;
 }
 .homeTitle{
-    width: 1600px;
-    font-size: 30px;
+    width: 1024px;
+    font-size: 25px;
+    font-weight: 200;
+    font-family: 'Stencil';
   }

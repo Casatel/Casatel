@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./navbar.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Button } from 'antd';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -50,27 +51,27 @@ const Navbar = () => {
             {user.displayName ? (
               <>
                 <span className="navUsername">{user.displayName}</span>
-                <button className="navButton" onClick={oauthLogout}>
+                <Button className="navButton" onClick={oauthLogout}>
                   Logout
-                </button>
+                </Button>
               </>
             ):(
               <>
                 <span className="navUsername">{user.username}</span>
-                <button className="navButton" onClick={jwtLogout}>
+                <Button className="navButton" onClick={jwtLogout}>
                   Logout
-                </button>
+                </Button>
               </>
             )}
             </>
           ) : (
             <>
-              <button className="navButton" onClick={handleRegister}>
+              <Button className="navButton" onClick={handleRegister}>
                 Register
-              </button>
-              <button className="navButton" onClick={handleLogin}>
+              </Button>
+              <Button className="navButton" onClick={handleLogin}>
                 Login
-              </button>
+              </Button>
             </>
           )}
         </div>

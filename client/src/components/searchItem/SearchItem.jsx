@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./searchItem.css";
+import { Button } from "antd";
 
 const SearchItem = ({item}) => {
   
@@ -26,13 +27,15 @@ const SearchItem = ({item}) => {
       <div className="siDetails">
         {item.rating && <div className="siRating">
           <span>Excellent</span>
-          <button>{item.rating}</button>
+          <Button>{item.rating}</Button>
         </div>}
         <div className="siDetailTexts">
           <span className="siPrice">Rs.{item.cheapestPrice}/-</span>
           <span className="siTaxOp">Includes taxes and fees</span>
           <Link to={`/hotels/${item._id}`}>
-            <button className="siCheckButton">See availability</button>
+          <Button type="primary" className="siCheckButton">
+See availability
+</Button>
           </Link>
         </div>
       </div>
