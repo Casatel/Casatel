@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Input, Button, Row, Col, Typography, Divider } from 'antd';
 import { AlignCenterOutlined, GoogleOutlined, UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
@@ -93,7 +93,7 @@ const RegistrationPage = () => {
       </Row>
       <div className="registration-redirect">
         <span>Already Registered?</span>
-        <button className="registration-sign-in" to={"/login"}>Sign In</button>
+        <Link className="registration-sign-in" to={"/login"}>Sign In</Link>
       </div>
     </div>
   );
