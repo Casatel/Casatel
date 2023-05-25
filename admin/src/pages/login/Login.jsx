@@ -1,13 +1,9 @@
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Input, Button, Alert, Row, Col, Typography, Form } from "antd";
 import axios from "axios";
-import {UserOutlined, LockOutlined, GoogleOutlined } from '@ant-design/icons';
-import { AuthContext } from "../../context/authContext";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom"
 import "./login.scss";
-
-const { Title } = Typography;
-
+import { AuthContext } from "../../context/authContext";
+import Google from "../../img/google.png";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -16,7 +12,7 @@ const Login = () => {
   });
 
   const { loading, error, dispatch } = useContext(AuthContext);
-
+  
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -30,6 +26,7 @@ const Login = () => {
       const res = await axios.post("/auth/login", credentials);
       if (res.data.isAdmin) {
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+
         navigate("/");
       } else {
         dispatch({
@@ -43,6 +40,7 @@ const Login = () => {
   };
 
   const googleAuth = async () => {
+
     fetch("http://localhost:8000/api/auth/login/success", {
       method: "GET",
       credentials: "include",
@@ -52,40 +50,33 @@ const Login = () => {
         "Access-Control-Allow-Credentials": true,
       },
     })
-      .then((response) => {
-        if (response.status === 200) return response.json();
-        throw new Error("Authentication has failed!");
-      })
-      .then(async (resObject) => {
-        const user = resObject.user;
+    .then((response) => {
+      if (response.status === 200) return response.json();
+      throw new Error("authentication has been failed!");
+    })
+    .then(async (resObject) => {
+      const user= resObject.user;
 
-        const username = user.displayName;
-        const password = user.id;
-
-        dispatch({ type: "LOGIN_START" });
+      const username = user.displayName;
+      const password= user.id;
+      
+      dispatch({ type: "LOGIN_START" });
         try {
-          const res = await axios.post(
-            "http://localhost:8000/api/auth/login",
-            { username, password },
-            { withCredentials: true }
-          );
-          if (res.data.isAdmin) {
-            dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-            window.open("/", "_self");
-          } else {
-            dispatch({
-              type: "LOGIN_FAILURE",
-              payload: { message: "You are not allowed!" },
-            });
-          }
+            const res = await axios.post("http://localhost:8000/api/auth/login", {username, password}, {withCredentials: true});
+              if (res.data.isAdmin) {
+                dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+                window.open("/", "_self");
+              } else {
+                dispatch({type: "LOGIN_FAILURE", payload: { message: "You are not allowed!" }});
+              }
         } catch (err) {
-          dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+            dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
         }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
 
   const google = async () => {
     window.open("http://localhost:8000/api/auth/google", "_self");
@@ -94,57 +85,25 @@ const Login = () => {
 
   return (
     <div className="login">
-      <Title className="loginTitle">Choose a Login Method</Title>
-      <Row justify="center">
-        <Col>
-          <Button className="loginButton google" onClick={google}>
-            <GoogleOutlined className="icon" />
+      <h1 className="loginTitle">Choose a Login Method</h1>
+      <div className="wrapper">
+        <div className="left">
+          <div className="loginButton google" onClick={google}>
+            <img src={Google} alt="" className="icon" />
             Google
-          </Button>
-        </Col>
-      </Row>
-      <Row justify="center">
-        <Col>
-          <div className="or">
-            <h3>OR</h3>
           </div>
-        </Col>
-      </Row>
-      <Row justify="center">
-        <Col>
-          <Form>
-            <Form.Item>
-              <Input
-                prefix={<UserOutlined />}
-                type="text"
-                placeholder="Username"
-                id="username"
-                onChange={handleChange}
-              />
-            </Form.Item>
-            <Form.Item>
-              <Input.Password
-                prefix={<LockOutlined />}
-                type="password"
-                placeholder="Password"
-                id="password"
-                onChange={handleChange}
-              />
-            </Form.Item>
-            <Form.Item>
-              <Button
-                disabled={loading}
-                onClick={handleClick}
-                className="submit"
-                type="primary"
-              >
-                Login
-              </Button>
-            </Form.Item>
-          </Form>
-          {error && <span>{error.message}</span>}
-        </Col>
-      </Row>
+        </div>
+        <div className="center">
+          <div className="line"></div>
+          <div className="or"><h3>OR</h3></div>
+        </div>
+        <div className="right">
+        <input type="text" placeholder="username" id="username" onChange={handleChange} />
+        <input type="password" placeholder="password" id="password" onChange={handleChange} />
+        <button disabled={loading} onClick={handleClick} className="submit">Login</button>
+        {error && <span>{error.message}</span>}
+        </div>
+      </div>
     </div>
   );
 };

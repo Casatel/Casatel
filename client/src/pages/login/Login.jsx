@@ -86,7 +86,7 @@ const Login = () => {
       </Row>
       <div className="login-redirect">
         <span>Have not Registered Yet?</span>
-        <button className="login-sign-in" to={"/registration"}>Sign Up</button>
+        <Link className="login-sign-in" to={"/registration"}>Sign Up</Link>
       </div>
     </div>
   );
