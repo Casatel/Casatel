@@ -35,6 +35,11 @@ const UserSchema = new mongoose.Schema({
         required: true
     },
 
+    loginCount: {
+        type: Number,
+        default: 0,
+    },
+
     isAdmin: {
         type: Boolean,
         default: false
