@@ -34,6 +34,8 @@ export const userInputs = [
     type: "text",
     placeholder: "USA",
   },
+
+
 ];
 
 export const productInputs = [

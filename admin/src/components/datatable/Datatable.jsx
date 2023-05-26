@@ -49,20 +49,22 @@ const Datatable = ({columns}) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        {path}
-        <Link to={`/${path}/new`} className="link">
+        Add New User
+        <Link to="/users/new" className="link">
           Add New
         </Link>
       </div>
-      <DataGrid
-        className="datagrid"
-        rows={list}
-        columns={columns.concat(actionColumn)}
-        pageSize={9}
-        rowsPerPageOptions={[9]}
-        checkboxSelection
-        getRowId={row => row._id}
-      />
+      {list && (
+        <DataGrid
+          className="datagrid"
+          rows={list}
+          columns={columns.concat(actionColumn)}
+          pageSize={9}
+          rowsPerPageOptions={[9]}
+          checkboxSelection
+          getRowId={row=>row._id}
+        />
+      )}
     </div>
   );
 };
