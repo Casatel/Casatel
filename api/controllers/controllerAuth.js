@@ -40,11 +40,14 @@ export const login = async (req, res, next) => {
         const userPassword= await bcrypt.compare(req.body.password, user.password);
         if(!userPassword) return next(createError(401, "Wrong password or username!"));
 
+        user.loginCount += 1; 
+        await user.save();
+
         //signs a JSON Web Token (JWT) using the user's ID and isAdmin status, along with a secret key stored in an environment variable.
         const token= jwt.sign({_id: user.id, isAdmin: user.isAdmin}, process.env.jwtSecret);
 
         const {password, isAdmin, ...otherDetails} = user._doc;
-        
+
         //adding cookie using JWT
         res.cookie("access_token", token, {
             httpOnly: true
