@@ -33,6 +33,11 @@ export const userColumns = [
     headerName: "Phone",
     width: 100,
   },
+  {
+    field: "loginCount",
+    headerName: "LoginCount",
+    width: 100,
+  }
 ];
 
 export const hotelColumns = [
