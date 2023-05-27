@@ -32,9 +32,6 @@ const Datatable = ({columns}) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="/users/test" style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row._id)}
@@ -49,8 +46,8 @@ const Datatable = ({columns}) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        Add New User
-        <Link to="/users/new" className="link">
+        {path}
+        <Link to={`/${path}/new`} className="link">
           Add New
         </Link>
       </div>

@@ -85,17 +85,10 @@ const Login = () => {
 
   return (
     <div className="login">
-      <h1 className="loginTitle">Choose a Login Method</h1>
+      <h1 className="loginTitle">Admin Login</h1>
       <div className="wrapper">
-        <div className="left">
-          <div className="loginButton google" onClick={google}>
-            <img src={Google} alt="" className="icon" />
-            Google
-          </div>
-        </div>
+        
         <div className="center">
-          <div className="line"></div>
-          <div className="or"><h3>OR</h3></div>
         </div>
         <div className="right">
         <input type="text" placeholder="username" id="username" onChange={handleChange} />
