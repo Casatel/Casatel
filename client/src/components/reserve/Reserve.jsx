@@ -51,7 +51,10 @@ const Reserve = ({ setOpen, hotelId }) => {
     );
   }
 
-  const handleClick = async () => {
+  // Confirmation Modal
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = async() => {
     try {
       await Promise.all(
         selectedRooms.map((roomId) => {
@@ -59,19 +62,11 @@ const Reserve = ({ setOpen, hotelId }) => {
             dates: alldates,
           });
           return res.data;
-        })
+        }) 
       );
-      setOpen(false);
-      navigate("/");
+      setIsModalVisible(true);
     } catch (err) {}
-
-  };
-
-  // Confirmation Modal
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const showModal = () => {
-    setIsModalVisible(true);
+    
   };
 
   const handleCancel = () => {
